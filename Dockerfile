@@ -1,5 +1,11 @@
 FROM python:3.7-slim
+
 ADD . /code
+
 WORKDIR /code
+
 RUN pip install -r requirements.txt
-CMD ["python", "run.py"]
+
+CMD ["python", "run.py", "--address=0.0.0.0", "--port=80", "--sslport=443", "--certfile=ssl/cert.crt", "--keyfile=ssl/cert.key"]
+
+EXPOSE 80 443
